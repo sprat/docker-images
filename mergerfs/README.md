@@ -1,4 +1,4 @@
-# mergerfs-docker
+# mergerfs
 
 This is an unofficial Docker image of [mergerfs](https://github.com/trapexit/mergerfs), a featureful union
 filesystem.

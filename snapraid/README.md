@@ -1,4 +1,4 @@
-# snapraid-docker
+# snapraid
 
 This is an unofficial Docker image of [snapraid](https://www.snapraid.it/), a backup program for disk arrays.
 
