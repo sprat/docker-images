@@ -10,12 +10,12 @@
     - echo $DOCKER_AUTH_CONFIG >~/.docker/config.json
 
 stages:
-  - check
+  - lint
   - build
 
-check:
+lint:
   extends: .docker
-  stage: check
+  stage: lint
   script:
     - docker buildx bake
   rules:
