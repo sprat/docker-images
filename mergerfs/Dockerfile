@@ -1,10 +1,5 @@
 # syntax=docker/dockerfile:1
 # hadolint global ignore=DL3007
-
-# renovate: datasource=github-releases depName=trapexit/mergerfs versioning=semver
-ARG VERSION=2.37.1
-
-# =========================================================
 FROM --platform=$BUILDPLATFORM tonistiigi/xx:latest AS xx
 
 # =========================================================
