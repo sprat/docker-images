@@ -8,10 +8,6 @@
   before_script:
     - docker buildx create --use --driver remote tcp://buildkitd:9000
     - echo $DOCKER_AUTH_CONFIG >~/.docker/config.json
-  rules:
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-      when: never
-    - when: on_success
 
 stages:
   - check
@@ -22,6 +18,8 @@ check:
   stage: check
   script:
     - docker buildx bake
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH || $CI_PIPELINE_SOURCE == "merge_request_event"
 
 build:
   extends: .docker
@@ -31,12 +29,10 @@ build:
     - if [ $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH ]; then OPTIONS=--push; fi
     - docker buildx bake $OPTIONS
   rules:
-    - changes:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH || $CI_PIPELINE_SOURCE == "merge_request_event"
+      changes:
         - ${COMPONENT}/**/*
   parallel:
     matrix:
       - COMPONENT:
           - snapraid
-
-
-
