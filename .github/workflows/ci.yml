@@ -15,6 +15,7 @@ jobs:
           filters: |
             mergerfs: 'mergerfs/**'
             snapraid: 'snapraid/**'
+            dehydrated-cloudflare: 'dehydrated-cloudflare/**'
 
   validate:
     runs-on: ubuntu-latest
