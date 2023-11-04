@@ -7,10 +7,11 @@ find . -name Dockerfile -exec hadolint {} +
 
 # =========================================================
 FROM koalaman/shellcheck-alpine:stable AS shellcheck
+SHELL ["/bin/sh", "-euo", "pipefail", "-c"]
 WORKDIR /src
 RUN --mount=target=/src \
 shellcheck --version && \
-find /src -name '*.sh' -exec shellcheck {} +
+find /src -name .git -prune -o -type f -executable -print | xargs -r grep -rlE '^#!/bin/(ba)?sh' | xargs -r shellcheck
 
 # =========================================================
 FROM cytopia/yamllint:alpine AS yamllint
