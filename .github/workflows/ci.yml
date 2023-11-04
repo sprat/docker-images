@@ -15,6 +15,7 @@ jobs:
           filters: |
             mergerfs: 'mergerfs/**'
             snapraid: 'snapraid/**'
+            ipxe-builder: 'ipxe-builder/**'
 
   validate:
     runs-on: ubuntu-latest
