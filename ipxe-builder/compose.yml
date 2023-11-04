@@ -1,0 +1,14 @@
+services:
+  builder:
+    image: ${IMAGE}:latest
+    command: /bin/test.sh
+    build:
+      args:
+        VERSION: ${VERSION}
+      tags:
+        - ${IMAGE}:latest
+      x-bake:
+        platforms:
+          - linux/amd64
+    volumes:
+      - ./test.sh:/bin/test.sh
