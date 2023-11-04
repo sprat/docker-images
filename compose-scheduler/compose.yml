@@ -1,0 +1,29 @@
+---
+services:
+  scheduler:
+    image: ${IMAGE}:latest
+    build:
+      tags:
+        - ${IMAGE}:latest
+      x-bake:
+        platforms:
+          - linux/amd64
+          - linux/arm64
+          - linux/arm/v7
+    volumes:
+      - .:/app:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+
+  job1:
+    image: busybox:latest
+    command: date
+    x-schedule: "* * * * *"
+    profiles:  # don't run the container on docker compose up
+      - on-schedule
+
+  job2:
+    image: busybox:latest
+    command: sh -c 'echo Error! >&2 && exit 1'
+    x-schedule: "* * * * *"
+    profiles:  # don't run the container on docker compose up
+      - on-schedule

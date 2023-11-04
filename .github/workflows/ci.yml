@@ -15,6 +15,7 @@ jobs:
           filters: |
             mergerfs: 'mergerfs/**'
             snapraid: 'snapraid/**'
+            compose-scheduler: 'compose-scheduler/**'
 
   validate:
     runs-on: ubuntu-latest
