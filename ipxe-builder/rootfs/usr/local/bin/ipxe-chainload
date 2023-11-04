@@ -1,0 +1,20 @@
+#!/bin/sh
+if [ $# -lt 1 ] ; then
+    echo "Usage: $0 CHAINLOAD_URL TARGET [TARGET ...]"
+    echo "Options:"
+    echo "  CHAINLOAD_URL: url to an IPXE configuration to chainload, e.g. 'http://my.server.lan/menu.ipxe'"
+    echo "  TARGET: build target, e.g. 'bin/ipxe.pxe'. See https://ipxe.org/appnote/buildtargets for a complete list"
+    exit 1
+fi
+
+chainload_url=$1
+shift
+ipxe_file=$(mktemp)
+
+cat <<EOF >"$ipxe_file"
+#!ipxe
+dhcp
+chain --replace "$chainload_url"
+EOF
+
+exec ipxe-make EMBED="$ipxe_file" "$@"

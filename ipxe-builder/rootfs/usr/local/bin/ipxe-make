@@ -1,0 +1,10 @@
+#!/bin/sh
+if [ $# -lt 1 ] ; then
+    echo "Usage: $0 TARGET [TARGET ...] [OPTION ...]"
+    echo "Options:"
+    echo "  TARGET: build target, e.g. 'bin/ipxe.pxe'. See https://ipxe.org/appnote/buildtargets for a complete list"
+    echo "  OPTION: build option, e.g. 'EMBED=xxx'."
+    exit 1
+fi
+
+make -C /opt/ipxe/src -f Makefile.ipxe-builder copy_to_out "$@"

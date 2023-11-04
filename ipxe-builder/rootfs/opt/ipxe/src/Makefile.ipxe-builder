@@ -1,0 +1,10 @@
+# include upstream ipxe Makefile
+include Makefile
+
+OUTPUT_DIR ?= /out
+
+# add a rule to copy the output targets into the /out directory
+copy_to_out : $(BIN_GOALS)
+	install -D -t $(OUTPUT_DIR) $^
+
+.PHONY : copy_to_out
