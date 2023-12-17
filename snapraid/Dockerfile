@@ -1,9 +1,9 @@
-# syntax=docker/dockerfile:1
+# syntax=docker/dockerfile:1.6.0
 # hadolint global ignore=DL3007,DL3018
-FROM --platform=$BUILDPLATFORM tonistiigi/xx:latest AS xx
+FROM --platform=$BUILDPLATFORM tonistiigi/xx:1.3.0 AS xx
 
 # =========================================================
-FROM --platform=$BUILDPLATFORM alpine:latest AS build
+FROM --platform=$BUILDPLATFORM alpine:3.19.0 AS build
 SHELL ["/bin/ash", "-euxo", "pipefail", "-c"]
 RUN apk add --no-cache clang make
 COPY --from=xx / /
