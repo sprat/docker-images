@@ -1,6 +1,6 @@
 ---
 .docker:
-  image: docker:26.0.0
+  image: docker:26.0.1
   services:
     - name: moby/buildkit:v0.13.1
       alias: buildkitd
