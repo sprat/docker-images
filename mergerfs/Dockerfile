@@ -1,4 +1,4 @@
-# syntax=docker/dockerfile:1.8.0
+# syntax=docker/dockerfile:1.8.1
 # hadolint global ignore=DL3007
 FROM --platform=$BUILDPLATFORM tonistiigi/xx:1.4.0 AS xx
 
