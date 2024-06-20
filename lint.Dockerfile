@@ -1,4 +1,4 @@
-# syntax=docker/dockerfile:1.8.1
+# syntax=docker/dockerfile:1
 FROM hadolint/hadolint:2.12.0-alpine AS hadolint
 WORKDIR /src
 RUN --mount=target=. \
