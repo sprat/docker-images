@@ -13,7 +13,7 @@ shellcheck --version && \
 find . -name .git -prune -o -type f -executable -print | xargs -r grep -rlE '^#!/bin/(ba)?sh' | xargs -r shellcheck
 
 # =========================================================
-FROM pipelinecomponents/yamllint:0.31.2 AS yamllint
+FROM toolhippie/yamllint:1.35.1 AS yamllint
 WORKDIR /src
 RUN --mount=target=. \
 yamllint -v && \
