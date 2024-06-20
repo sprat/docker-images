@@ -3,5 +3,6 @@ extends: default
 
 rules:
   document-start: disable
+  new-lines: disable
   line-length:
     max: 100
