@@ -3,7 +3,7 @@
 FROM --platform=$BUILDPLATFORM tonistiigi/xx:1.5.0 AS xx
 
 # =========================================================
-FROM --platform=$BUILDPLATFORM alpine:3.20.2 AS build
+FROM --platform=$BUILDPLATFORM alpine:3.20.3 AS build
 SHELL ["/bin/ash", "-euxo", "pipefail", "-c"]
 COPY --from=xx / /
 ARG VERSION
