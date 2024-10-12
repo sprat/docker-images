@@ -3,7 +3,6 @@ group "default" {
 }
 
 target "_lint" {
-  dockerfile = "lint.Dockerfile"
   output = ["type=cacheonly"]
 }
 
