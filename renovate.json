@@ -1,10 +1,15 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended", ":automergeAll"],
+  "extends": [
+    "config:recommended",
+    ":automergeAll"
+  ],
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": ["(^|/)\\.env$"],
+      "managerFilePatterns": [
+        "/(^|/)\\.env$/"
+      ],
       "matchStrings": [
         "# renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?)(?: versioning=(?<versioning>.*?))?\\n.*VERSION=(?<currentValue>.*?)\\n"
       ]
