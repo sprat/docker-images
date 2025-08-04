@@ -6,7 +6,7 @@ hadolint --version && \
 find . -name Dockerfile -exec hadolint {} +
 
 # =========================================================
-FROM koalaman/shellcheck-alpine:v0.10.0 AS shellcheck
+FROM koalaman/shellcheck-alpine:v0.11.0 AS shellcheck
 SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
 WORKDIR /src
 RUN --mount=target=. \
