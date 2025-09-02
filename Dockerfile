@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM hadolint/hadolint:2.12.0-alpine AS hadolint
+FROM hadolint/hadolint:v2.13.1-alpine AS hadolint
 WORKDIR /src
 RUN --mount=target=. \
 hadolint --version && \
