@@ -31,4 +31,4 @@ services:
     depends_on:
       - mergerfs
     volumes:
-      - ./pool:/pool
+    - ./pool:/pool
