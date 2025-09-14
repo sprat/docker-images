@@ -43,12 +43,13 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - uses: docker/bake-action@v6
         with:
+          source: .
           workdir: ${{ matrix.component }}
           push: ${{ github.ref == 'refs/heads/master' }}
 
-  all-good:
+  status-check:
     runs-on: ubuntu-latest
-    if: always()
+    if: always()  # should always run
     needs:
       - validate
       - build
@@ -56,3 +57,4 @@ jobs:
       - uses: re-actors/alls-green@release/v1
         with:
           jobs: ${{ toJSON(needs) }}
+          allowed-skips: build
