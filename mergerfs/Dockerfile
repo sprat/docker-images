@@ -24,5 +24,5 @@ LABEL org.opencontainers.image.version="${VERSION}"
 LABEL org.opencontainers.image.url="https://github.com/trapexit/mergerfs"
 LABEL org.opencontainers.image.licenses="ISC"
 LABEL org.opencontainers.image.source="https://gitlab.com/sprat/mergerfs"
-LABEL org.opencontainers.image.authors="Sylvain Prat <sylvain.prat@gmail.com>"
+LABEL org.opencontainers.image.authors="Sylvain Prat <sylvain.prat@achird.net>"
 ENTRYPOINT ["/bin/mergerfs", "-f"]
