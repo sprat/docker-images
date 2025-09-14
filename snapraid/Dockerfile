@@ -29,6 +29,6 @@ LABEL org.opencontainers.image.url="https://www.snapraid.it"
 LABEL org.opencontainers.image.version="${VERSION}"
 LABEL org.opencontainers.image.licenses="GPL-3.0"
 LABEL org.opencontainers.image.source="https://gitlab.com/sprat/snapraid"
-LABEL org.opencontainers.image.authors="Sylvain Prat <sylvain.prat@gmail.com>"
+LABEL org.opencontainers.image.authors="Sylvain Prat <sylvain.prat@achird.net>"
 COPY --from=build /src/snapraid /bin/
 ENTRYPOINT ["/bin/snapraid"]
