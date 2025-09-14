@@ -13,10 +13,8 @@ jobs:
         id: filter
         with:
           filters: |
-            mergerfs:
-              - 'mergerfs/**'
-            snapraid:
-              - 'snapraid/**'
+            mergerfs: 'mergerfs/**'
+            snapraid: 'snapraid/**'
 
   validate:
     runs-on: ubuntu-latest
