@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 # hadolint global ignore=DL3007
-FROM --platform=$BUILDPLATFORM tonistiigi/xx:1.7.0 AS xx
+FROM --platform=$BUILDPLATFORM tonistiigi/xx:1.8.0 AS xx
 
 # =========================================================
 FROM --platform=$BUILDPLATFORM alpine:3.22.2 AS build
