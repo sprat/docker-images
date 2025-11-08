@@ -16,7 +16,7 @@ xx-verify --static /usr/local/bin/mergerfs*
 
 # =========================================================
 FROM scratch AS image
-COPY --from=build /usr/local/bin/mergerfs* /bin/
+COPY --from=build /usr/local/bin/mergerfs* /usr/bin/
 ARG VERSION
 LABEL org.opencontainers.image.title="mergerfs"
 LABEL org.opencontainers.image.description="A featureful union filesystem"
@@ -25,4 +25,4 @@ LABEL org.opencontainers.image.url="https://github.com/trapexit/mergerfs"
 LABEL org.opencontainers.image.licenses="ISC"
 LABEL org.opencontainers.image.source="https://github.com/sprat/docker-images"
 LABEL org.opencontainers.image.authors="Sylvain Prat <sylvain.prat@achird.net>"
-ENTRYPOINT ["/bin/mergerfs", "-f"]
+ENTRYPOINT ["/usr/bin/mergerfs", "-f"]
