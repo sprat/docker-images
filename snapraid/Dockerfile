@@ -22,6 +22,7 @@ xx-verify --static snapraid; \
 
 # =========================================================
 FROM scratch AS image
+COPY --from=build /src/snapraid /usr/bin/
 ARG VERSION
 LABEL org.opencontainers.image.title="snapraid"
 LABEL org.opencontainers.image.description="SnapRAID is a backup program for disk arrays. It stores parity information of your data and it recovers from up to six disk failures."
@@ -30,5 +31,4 @@ LABEL org.opencontainers.image.version="${VERSION}"
 LABEL org.opencontainers.image.licenses="GPL-3.0"
 LABEL org.opencontainers.image.source="https://github.com/sprat/docker-images"
 LABEL org.opencontainers.image.authors="Sylvain Prat <sylvain.prat@achird.net>"
-COPY --from=build /src/snapraid /bin/
-ENTRYPOINT ["/bin/snapraid"]
+ENTRYPOINT ["/usr/bin/snapraid"]
