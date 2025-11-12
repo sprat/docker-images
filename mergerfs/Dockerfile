@@ -10,7 +10,7 @@ ARG VERSION
 ARG TARGETPLATFORM
 RUN \
 ARCH=$(xx-info debian-arch); \
-URL=https://github.com/trapexit/mergerfs/releases/download/${VERSION}/mergerfs-static-linux_${ARCH}.tar.gz; \
+URL=https://github.com/trapexit/mergerfs/releases/download/${VERSION}/mergerfs-${VERSION}-static-linux_${ARCH}.tar.gz; \
 wget -qO- "$URL" | tar xz; \
 xx-verify --static /usr/local/bin/mergerfs*
 
