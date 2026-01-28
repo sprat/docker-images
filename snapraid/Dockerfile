@@ -3,7 +3,7 @@
 FROM --platform=$BUILDPLATFORM tonistiigi/xx:1.9.0 AS xx
 
 # =========================================================
-FROM --platform=$BUILDPLATFORM alpine:3.23.2 AS build
+FROM --platform=$BUILDPLATFORM alpine:3.23.3 AS build
 SHELL ["/bin/ash", "-euxo", "pipefail", "-c"]
 RUN apk add --no-cache clang make
 COPY --from=xx / /
