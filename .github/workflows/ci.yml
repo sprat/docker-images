@@ -15,6 +15,7 @@ jobs:
           filters: |
             mergerfs: 'mergerfs/**'
             snapraid: 'snapraid/**'
+            snapraid-daemon: 'snapraid-daemon/**'
 
   validate:
     runs-on: ubuntu-latest
