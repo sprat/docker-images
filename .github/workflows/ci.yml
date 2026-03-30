@@ -44,8 +44,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - uses: docker/bake-action@v7
         with:
-          source: .
-          workdir: ${{ matrix.component }}
+          source: ./${{ matrix.component }}
           push: ${{ vars.DOCKERHUB_USERNAME != null }}
 
   status-check:
