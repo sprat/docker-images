@@ -1,7 +1,16 @@
 services:
   mergerfs:
     image: ${IMAGE}:latest
-    command: ["-o", "debug=true", "/media/data*", "/pool"]
+    configs:
+      - source: file1
+        target: /media/data1/file1.txt
+      - source: file2
+        target: /media/data2/file2.txt
+    command:
+      - -o
+      - debug=true
+      - /media/data1:/media/data2
+      - /pool
     build:
       args:
         VERSION: ${VERSION}
@@ -22,13 +31,24 @@ services:
     devices:
       - /dev/fuse:/dev/fuse
     volumes:
-      - ./test:/media
-      - ./pool:/pool:shared
+      - /tmp/mergerfs-image-test:/pool:shared
 
   check:
     image: busybox:latest
-    command: sh -c 'cat /pool/*'
+    command:
+      - sh
+      - -c
+      - cd /pool && grep . *
     depends_on:
-      - mergerfs
+      mergerfs:
+        condition: service_started
     volumes:
-      - ./pool:/pool
+      - /tmp/mergerfs-image-test:/pool:shared
+
+configs:
+  file1:
+    content: |
+      Content of file1
+  file2:
+    content: |
+      Content of file2
