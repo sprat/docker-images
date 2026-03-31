@@ -1,5 +1,5 @@
 services:
-  snapraid:
+  test:
     image: ${IMAGE}:latest
     command: sync
     tmpfs:

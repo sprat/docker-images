@@ -33,12 +33,12 @@ services:
     volumes:
       - /tmp/mergerfs-image-test:/pool:shared
 
-  check:
+  test:
     image: busybox:latest
     command:
       - sh
       - -c
-      - cd /pool && grep . *
+      - test -f /pool/file1.txt && test -f /pool/file2.txt
     depends_on:
       mergerfs:
         condition: service_started
