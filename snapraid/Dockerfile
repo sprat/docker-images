@@ -7,18 +7,16 @@ FROM --platform=$BUILDPLATFORM alpine:3.23.3 AS build
 SHELL ["/bin/ash", "-euxo", "pipefail", "-c"]
 RUN apk add --no-cache clang make
 COPY --from=xx / /
+ARG TARGETPLATFORM
+RUN xx-apk add --no-cache xx-c-essentials
 WORKDIR /src
 ARG VERSION
-RUN \
-url="https://github.com/amadvance/snapraid/releases/download/v${VERSION}/snapraid-${VERSION}.tar.gz"; \
-wget -qO- "$url" | tar xz --strip-components=1
-ARG TARGETPLATFORM
-RUN \
-xx-apk add xx-c-essentials; \
-CC=xx-clang LDFLAGS=-static ./configure --host "$(xx-clang --print-target-triple)"; \
-make; \
-xx-verify --static snapraid; \
-./snapraid --version
+RUN url="https://github.com/amadvance/snapraid/releases/download/v${VERSION}/snapraid-${VERSION}.tar.gz"; \
+    wget -qO- "$url" | tar xz --strip-components=1; \
+    CC=xx-clang LDFLAGS=-static ./configure --host "$(xx-clang --print-target-triple)"; \
+    make; \
+    xx-verify --static snapraid; \
+    ./snapraid --version
 
 # =========================================================
 FROM scratch AS image
