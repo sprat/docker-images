@@ -1,7 +1,7 @@
 services:
   mergerfs:
     image: ${IMAGE}:latest
-    command: ["/media/data*", "/pool", "-o", "debug"]
+    command: ["-o", "debug=true", "/media/data*", "/pool"]
     build:
       args:
         VERSION: ${VERSION}
