@@ -1,7 +1,14 @@
 services:
   snapraid:
-    command: --version
     image: ${IMAGE}:latest
+    command: sync
+    tmpfs:
+      - /media/data1
+      - /media/data2
+      - /media/parity
+    configs:
+      - source: snapraid_config
+        target: /etc/snapraid.conf
     build:
       args:
         VERSION: ${VERSION}
@@ -13,3 +20,12 @@ services:
           - linux/amd64
           - linux/arm64
           - linux/arm/v7
+
+configs:
+  snapraid_config:
+    content: |
+      data data1 /media/data1
+      data data2 /media/data2
+      content /media/data1/snapraid.content
+      content /media/data2/snapraid.content
+      parity /media/parity/snapraid.parity
