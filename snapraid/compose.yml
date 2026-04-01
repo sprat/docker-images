@@ -1,7 +1,7 @@
 services:
   test:
     image: ${IMAGE}:latest
-    command: sync
+    command: list
     tmpfs:
       - /media/data1
       - /media/data2
