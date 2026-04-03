@@ -1,0 +1,25 @@
+services:
+  ui:
+    image: sprat/snapraid-daemon:latest
+    ports:
+      - 7627:7627
+    build:
+      args:
+        VERSION: ${VERSION}
+      tags:
+        - sprat/snapraid-daemon:${VERSION}
+        - sprat/snapraid-daemon:latest
+      x-bake:
+        platforms:
+          - linux/amd64
+          - linux/arm64
+          - linux/arm/v7
+
+  test:
+    image: busybox:latest
+    command:
+      - wget
+      - -q
+      - http://ui:7627/
+    depends_on:
+      - ui
