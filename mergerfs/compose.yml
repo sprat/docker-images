@@ -1,6 +1,6 @@
 services:
   mergerfs:
-    image: ${IMAGE}:latest
+    image: sprat/mergerfs:latest
     configs:
       - source: file1
         target: /media/data1/file1.txt
@@ -15,8 +15,8 @@ services:
       args:
         VERSION: ${VERSION}
       tags:
-        - ${IMAGE}:${VERSION}
-        - ${IMAGE}:latest
+        - sprat/mergerfs:${VERSION}
+        - sprat/mergerfs:latest
       x-bake:
         platforms:
           - linux/amd64

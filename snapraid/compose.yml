@@ -1,6 +1,6 @@
 services:
   test:
-    image: ${IMAGE}:latest
+    image: sprat/snapraid:latest
     command: list
     tmpfs:
       - /media/data1
@@ -13,8 +13,8 @@ services:
       args:
         VERSION: ${VERSION}
       tags:
-        - ${IMAGE}:${VERSION}
-        - ${IMAGE}:latest
+        - sprat/snapraid:${VERSION}
+        - sprat/snapraid:latest
       x-bake:
         platforms:
           - linux/amd64
