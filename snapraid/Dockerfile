@@ -6,6 +6,7 @@ FROM --platform=$BUILDPLATFORM tonistiigi/xx:1.9.0 AS xx
 FROM --platform=$BUILDPLATFORM alpine:3.24.1 AS build
 SHELL ["/bin/ash", "-euxo", "pipefail", "-c"]
 RUN apk add --no-cache clang make
+# hadolint ignore=DL3067
 COPY --from=xx / /
 ARG TARGETPLATFORM
 RUN xx-apk add --no-cache xx-c-essentials

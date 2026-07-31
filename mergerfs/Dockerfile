@@ -5,6 +5,7 @@ FROM --platform=$BUILDPLATFORM tonistiigi/xx:1.9.0 AS xx
 # =========================================================
 FROM --platform=$BUILDPLATFORM alpine:3.24.1 AS build
 SHELL ["/bin/ash", "-euxo", "pipefail", "-c"]
+# hadolint ignore=DL3067
 COPY --from=xx / /
 ARG VERSION
 ARG TARGETPLATFORM
