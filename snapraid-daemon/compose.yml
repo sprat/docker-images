@@ -1,0 +1,58 @@
+services:
+  ui:
+    image: sprat/snapraid-daemon:latest
+    ports:
+      - 7627:7627
+    tmpfs:
+      - /media/data1
+      - /media/data2
+      - /media/parity
+      - /run
+    volumes:
+      - type: image
+        source: sprat/snapraid:15.1
+        target: /usr/local/bin
+        read_only: true
+        image:
+          subpath: usr/bin
+    configs:
+      - source: snapraidd_config
+        target: /etc/snapraidd.conf
+      - source: snapraid_config
+        target: /etc/snapraid.conf
+    build:
+      args:
+        VERSION: ${VERSION}
+      tags:
+        - sprat/snapraid-daemon:${VERSION}
+        - sprat/snapraid-daemon:latest
+      x-bake:
+        platforms:
+          - linux/amd64
+          - linux/arm64
+          - linux/arm/v7
+
+  test:
+    image: busybox:latest
+    command:
+      - wget
+      - -qO
+      - /dev/null
+      - http://ui:7627/
+    depends_on:
+      - ui
+
+configs:
+  snapraidd_config:
+    content: |
+      net_enabled = 1
+      net_port = 7627
+      net_web_root = /usr/share/snapraidd/commander.zip
+
+  snapraid_config:
+    content: |
+      data data1 /media/data1
+      data data2 /media/data2
+      content /media/data1/snapraid.content
+      content /media/data2/snapraid.content
+      parity /media/parity/snapraid.parity
