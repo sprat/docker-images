@@ -9,7 +9,7 @@ RUN apk add --no-cache clang make
 # hadolint ignore=DL3067
 COPY --from=xx / /
 ARG TARGETPLATFORM
-RUN xx-apk add --no-cache xx-c-essentials
+RUN xx-apk add --no-cache xx-c-essentials linux-headers
 WORKDIR /src
 ARG VERSION
 RUN url="https://github.com/amadvance/snapraid/releases/download/v${VERSION}/snapraid-${VERSION}.tar.gz"; \
